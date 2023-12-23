@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  unifi-docker-arm648.0:
+    container_name: unifi-docker-arm648.0-container
+    image: unifi-docker-arm648.0:latest
+    build:
+      context: .
+      network: host
+      dockerfile: ./Dockerfile
+    volumes:
+      - var-lib-unifi:/var/lib/unifi
+      - usr-lib-unifi:/usr/lib/unifi
+    network_mode: host
+    restart: on-failure
+
+volumes:
+  var-lib-unifi:
+  usr-lib-unifi:
